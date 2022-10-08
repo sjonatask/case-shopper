@@ -13,5 +13,7 @@ export class ProductDataBase extends BaseDatabase{
             quantity_stock: product.getQuantityStock
         })
         .into(this.TABLE_NAME)
+
+        BaseDatabase.destroyConnection()
     }
 }

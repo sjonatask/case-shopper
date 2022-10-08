@@ -47,8 +47,10 @@ export class User{
         this.role = role;
     }
 
-   static stringToUserRole(input: string): UserRole{
+   static stringToUserRole(input: string | undefined): UserRole{
         switch (input) {
+            case undefined:
+                return UserRole.NORMAL
             case "NORMAL":
               return UserRole.NORMAL;
             case "ADMIN":

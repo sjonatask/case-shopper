@@ -30,7 +30,7 @@ export class CustomError extends Error {
   
   export class InvalidPassword extends CustomError {
     constructor(){
-      super("Invalid Password", 400);
+      super("Invalid Password, i'ts  must have minimum 8 characters", 400);
     }
   }
   
