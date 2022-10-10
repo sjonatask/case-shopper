@@ -1,4 +1,4 @@
-import { ShoppingListDTO } from './../model/shoppingList';
+import { ShoppingList, ShoppingListDTO } from './../model/shoppingList';
 import { UserDataBase } from "../data/userDataBase";
 import { 
     CustomError,
@@ -61,5 +61,17 @@ export class UserBusiness {
         const token = this.authenticator.generateToken({id: checkUser.getId(), role: checkUser.getRole()})
         
         return token
+    }
+
+    public async getShoppingList(token:string):Promise<any>{
+        const user = this.authenticator.getData(token)
+        const checkUserId = this.checkData.checkUserId(user.id)
+        if(!checkUserId) throw new InvalidToken()
+
+        const result = await userDB.getShoppingList(user.id)
+        if(!result) throw new CustomError("List not found", 404)
+
+        let output = result.map((e: any) => ShoppingList.toProductModel(e))
+        return output
     }
 }

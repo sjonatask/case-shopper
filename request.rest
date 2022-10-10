@@ -1,4 +1,7 @@
 ###
+GET http://localhost:3003/user/shoppinglist
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQ0MzU4NCwiZXhwIjoxNjY1NDQ3MTg0fQ.LHzzthr-W0Y_L90YQ9QBnQD270LHLwjLKsRcvMOJ58c
+###
 GET http://localhost:3003/product
 
 ###
