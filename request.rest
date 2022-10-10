@@ -1,0 +1,43 @@
+###
+GET http://localhost:3003/product
+
+###
+POST  http://localhost:3003/user/signup
+Content-Type: application/json
+
+{
+    "name":"teste1",
+    "email": "teste1@teste.com",
+    "password": "12345678"
+}
+
+###
+POST http://localhost:3003/user/login
+Content-Type: application/json
+
+{
+    "email": "teste1@teste.com",
+    "password": "12345678"
+}
+
+###
+POST http://localhost:3003/product/insert
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQyMzA2MiwiZXhwIjoxNjY1NDI2NjYyfQ.pocAjzIwPW0-0H4WRt-hl560rk16d_18q3UKZXrEb6Y
+Content-Type: application/json
+
+{
+    "id":"22",
+    "name":"ENERGÉTICO RED BULL ENERGY DRINK SEM AÇÚCAR 250ML",
+    "price":"7.49",
+    "qtyStock":"659"
+}
+
+###
+POST  http://localhost:3003/product/purchase
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQzNzA2NCwiZXhwIjoxNjY1NDQwNjY0fQ.ohvCCP6Hq4SmYRTb9j7RZ0dUEf9y1veTqq73CZlVAps
+Content-Type: application/json
+
+{
+    "productId": "22",
+    "quantity": "1"
+}

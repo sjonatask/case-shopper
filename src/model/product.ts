@@ -40,7 +40,11 @@ export class Products{
     }
 
     static toProductModel(product: any): Products {
-        return new Products(product.id, product.name, product.price ,product.quantityStock);
+        return new Products(product.id, product.name, product.price ,product.qtyStock);
+    }
+
+    static toProductModelOutput(product: any): Products {
+        return new Products(product.id, product.name, product.price ,product.quantity_stock);
     }
 }
 

@@ -33,6 +33,12 @@ export class CustomError extends Error {
       super("Invalid Password, i'ts  must have minimum 8 characters", 400);
     }
   }
+
+  export class PasswordWrong extends CustomError {
+    constructor(){
+      super("Password Wrong", 400);
+    }
+  }
   
   export class UnauthorizedUser extends CustomError {
     constructor(){

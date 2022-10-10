@@ -11,3 +11,8 @@ export interface IAuthenticator {
 export interface IGenerateId {
     generate: () => string
 }
+
+export interface ICheckDatas {
+    checkProductId: (productId: string) => Promise<boolean>
+    checkUserId: (productId: string) => Promise<boolean>
+}
