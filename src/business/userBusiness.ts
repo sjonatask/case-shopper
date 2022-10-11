@@ -18,7 +18,6 @@ import {
     IGenerateId,
     IHashManager
 } from "./ports";
-import { ShoppingListInput } from "../model/shoppingList";
 
 const userDB = new UserDataBase()
 

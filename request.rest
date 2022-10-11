@@ -1,6 +1,7 @@
 ###
 GET http://localhost:3003/user/shoppinglist
 Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQ0MzU4NCwiZXhwIjoxNjY1NDQ3MTg0fQ.LHzzthr-W0Y_L90YQ9QBnQD270LHLwjLKsRcvMOJ58c
+
 ###
 GET http://localhost:3003/product
 
@@ -37,10 +38,10 @@ Content-Type: application/json
 
 ###
 POST  http://localhost:3003/product/purchase
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQzNzA2NCwiZXhwIjoxNjY1NDQwNjY0fQ.ohvCCP6Hq4SmYRTb9j7RZ0dUEf9y1veTqq73CZlVAps
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQ0MzU4NCwiZXhwIjoxNjY1NDQ3MTg0fQ.LHzzthr-W0Y_L90YQ9QBnQD270LHLwjLKsRcvMOJ58c
 Content-Type: application/json
 
 {
-    "productId": "22",
-    "quantity": "1"
+    "productId": "20",
+    "quantity": "2"
 }

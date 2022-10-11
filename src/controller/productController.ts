@@ -18,10 +18,10 @@ const productBusiness = new ProductBusiness(generateID, authenticator, hashManag
 export class ProductController {
     public async insertProduct(req:Request, res:Response):Promise<void>{
         try {
-            const { id, name, price, qtyStock} = req.body
+            const { id, name, price, qtyStock } = req.body
             const token = req.headers.authorization 
 
-            if( !id || !name || !price || !qtyStock) throw new EmptyFields
+            if( !id || !name || !price || !qtyStock ) throw new EmptyFields
             if(!token) throw new NoLog
             
             const input:productsInput = {
