@@ -44,7 +44,8 @@ export class ProductBusiness {
         const result = await productDB.getAllProducts()
         if(!result) throw new CustomError("Products not found", 404)
         
-        return result
+        let output = result.map(e => Products.toProductModelOutput(e))
+        return output
     }
 
     public async purchaseShoppingList(input:ShoppingListInput):Promise<void>{

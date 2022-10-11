@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import {AddressInfo} from "net";
+import { AddressInfo } from "net";
 import express from "express";
 
 dotenv.config();
