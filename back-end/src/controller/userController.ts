@@ -57,4 +57,17 @@ export class UserController{
             res.status(error.code).send({error: error.message || error.sqlMessage})
         }
     }
+    
+    public async getShoppingList(req:Request, res:Response){
+        try {
+            const token = req.headers.authorization
+
+            if(!token) throw new NoLog
+
+            const list = await userBusiness.getShoppingList(token)
+            res.status(200).send({list})
+        } catch (error:any) {
+            res.status(500).send({error: error.message || error.sqlMessage})
+        }
+    }
 }

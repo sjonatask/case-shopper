@@ -23,10 +23,9 @@ export class ProductDataBase extends BaseDatabase{
         const result = await this.getConnection()
             .select("*")
             .from(this.TABLE_NAME)
-        let output = result.map(e => Products.toProductModelOutput(e))
         BaseDatabase.destroyConnection()
-
-        return output
+            
+        return result
     }
 
     public async getProductById(id:string):Promise<any>{
