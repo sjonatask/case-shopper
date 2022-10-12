@@ -36,7 +36,7 @@ export class ProductController {
 
             res.status(200).send({message: "product inserted"})
         } catch (error:any) {
-            res.status(error.code).send({error: error.message || error.sqlMessage})
+            res.status(500).send({error: error.message || error.sqlMessage})
         }
     }
     public async getAllProducts(req:Request, res:Response):Promise<void>{
@@ -45,7 +45,7 @@ export class ProductController {
 
             res.status(200).send({products})
         } catch (error:any) {
-            res.status(error.code).send({error: error.message || error.sqlMessage})
+            res.status(500).send({error: error.message || error.sqlMessage})
         }
     }
 
@@ -67,7 +67,7 @@ export class ProductController {
 
             res.status(200).send({message: "purchase made"})
         } catch (error:any) {
-            res.status(error.code).send({error: error.message || error.sqlMessage})
+            res.status(500).send({error: error.message || error.sqlMessage})
         }
     }
 }
