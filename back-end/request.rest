@@ -38,17 +38,17 @@ Content-Type: application/json
 
 ###
 POST  http://localhost:3003/product/purchase
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTQ0MzU4NCwiZXhwIjoxNjY1NDQ3MTg0fQ.LHzzthr-W0Y_L90YQ9QBnQD270LHLwjLKsRcvMOJ58c
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImRhZWNlMDg2LWJmODMtNDU3My05MjMxLTQ1ZGY0ZTNiZTU4MyIsInJvbGUiOiJOT1JNQUwiLCJpYXQiOjE2NjU2OTAwOTEsImV4cCI6MTY2NTY5MzY5MX0.G7PBNSD9cdRr9YPS5liAObQW16URpM1dQR_w5W2RnBM
 Content-Type: application/json
 
 {
     "productId": "20",
-    "quantity": "2"
+    "quantity": "3"
 }
 
 ###
 PUT http://localhost:3003/product/edit
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTY4MzI4MCwiZXhwIjoxNjY1Njg2ODgwfQ.anPj1HFxK6pezgFotZyMNsqK_OzdaS3GlxseYnbeBp8
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTY5MTcwMCwiZXhwIjoxNjY1Njk1MzAwfQ.gghAzLM16ws4qZ3kN4AtdkQr5hwM6ODz8CEcJ8N0YSY
 Content-Type: application/json
 
 {
