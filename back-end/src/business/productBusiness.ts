@@ -1,7 +1,9 @@
 import { ProductDataBase } from '../data/productDataBase';
-import { CustomError, InvalidToken, UnauthorizedUser } from '../error/customError';
+import { CustomError, EmptyFields, InvalidProductId, InvalidToken, UnauthorizedUser } from '../error/customError';
 import { ShoppingListDTO, ShoppingListInput } from '../model/shoppingList';
 import {
+    deleteProductInput,
+    editProductInput,
     Products,
     productsInput
 } from './../model/product';
@@ -50,10 +52,11 @@ export class ProductBusiness {
 
     public async purchaseShoppingList(input:ShoppingListInput):Promise<void>{
         const checkProductId = this.checkData.checkProductId(input.productId)
-        if(!checkProductId) throw new CustomError("this id product not exist", 404)
+        if(!checkProductId) throw new InvalidProductId
 
         const user = this.authenticator.getData(input.token)
         const checkUserId = this.checkData.checkUserId(user.id)
+
         if(!checkUserId) throw new InvalidToken()
 
         const inputToData:ShoppingListDTO = {
@@ -63,5 +66,33 @@ export class ProductBusiness {
         }
 
         await productDB.purchaseShoppingList(inputToData)
+    }
+    
+        public async changeQty(input:editProductInput):Promise<void>{
+            const user = this.authenticator.getData(input.token)
+            if(user.role !== "ADMIN") throw new UnauthorizedUser
+    
+            // const checkProductId = await this.checkData.checkProductId(input.id)
+            // if(!checkProductId) throw new InvalidProductId
+    
+            const inputDTO = {
+                id: input.id,
+                qty: input.qty
+            }       
+            
+            const result = await productDB.changeQty(inputDTO)
+        }
+
+    public async deleteProduct(input:deleteProductInput):Promise<void>{
+        const { id, token } = input
+
+        const user = this.authenticator.getData(token)
+        if(user.role !== "ADMIN") throw new UnauthorizedUser
+
+        // const checkProductId = await this.checkData.checkProductId(id)            
+        // if(!checkProductId) throw new InvalidProductId()
+
+        await productDB.deleteProductForeignKey(input.id)
+        await productDB.deleteProduct(input.id)
     }
 }

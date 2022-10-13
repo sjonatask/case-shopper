@@ -63,3 +63,9 @@ export class CustomError extends Error {
       super("User not Found", 404);
     }
   }
+
+  export class InvalidProductId extends CustomError {
+    constructor(){
+      super("this id product not exist", 404);
+    }
+  }

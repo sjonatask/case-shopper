@@ -2,6 +2,7 @@ import { ShoppingList, ShoppingListDTO } from './../model/shoppingList';
 import { UserDataBase } from "../data/userDataBase";
 import { 
     CustomError,
+    EmailCadastred,
     InvalidEmail,
     InvalidPassword,
     InvalidToken,
@@ -32,6 +33,8 @@ export class UserBusiness {
     public async signup(user: UserInput): Promise<void> {
         if (!user.email.includes("@")) throw new InvalidEmail()
         if (user.password.length < 8) throw new InvalidPassword()
+        
+        if(await this.checkData.checkEmail(user.email)) throw new InvalidEmail()
 
         const role = User.stringToUserRole(user.role)
         const toModel = {

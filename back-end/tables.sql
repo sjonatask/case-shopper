@@ -2,7 +2,7 @@
 CREATE TABLE IF NOT EXISTS products_shopper (
     id VARCHAR(80) PRIMARY KEY ,
     name VARCHAR(120) NOT NULL,
-    price DECIMAL NOT NULL,
+    price DECIMAL(6,2) NOT NULL,
     quantity_stock INT NOT NULL
 );
 
@@ -22,4 +22,6 @@ CREATE TABLE IF NOT EXISTS user_shopping_list(
     FOREIGN KEY (id_user) REFERENCES user_shopper(id)
 );
 
-ALTER TABLE products_shopper MODIFY COLUMN price DECIMAL(6,2) NOT NULL
+UPDATE products_shopper
+SET quantity_stock = 4
+WHERE id = "22"

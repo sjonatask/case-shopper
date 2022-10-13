@@ -1,3 +1,4 @@
+import { editProductDTO } from './../model/product';
 import { Products } from "../model/product";
 import { ShoppingListDTO } from "../model/shoppingList";
 import { BaseDatabase } from "./baseDataBase";
@@ -47,5 +48,28 @@ export class ProductDataBase extends BaseDatabase{
             })
             .into(this.TABLE_SHOPPING_NAME)
         BaseDatabase.destroyConnection()
+    }
+
+    public async deleteProduct(id: string):Promise<void>{        
+        await this.getConnection()
+            .delete()
+            .from(this.TABLE_NAME)
+            .where({id})
+    }
+
+    public async deleteProductForeignKey(id: string):Promise<void>{        
+        await this.getConnection()
+            .delete()
+            .from(this.TABLE_SHOPPING_NAME)
+            .where({id_product: id})
+    }
+
+    public async changeQty(product:any):Promise<void>{                      
+        await this.getConnection()
+            .update({
+                quantity_stock: product.qty
+            })
+            .where({id: product.id})
+            .from(this.TABLE_NAME)
     }
 }

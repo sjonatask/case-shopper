@@ -11,7 +11,7 @@ Content-Type: application/json
 
 {
     "name":"teste1",
-    "email": "teste1@teste.com",
+    "email": "teste2@teste.com",
     "password": "12345678"
 }
 
@@ -45,3 +45,17 @@ Content-Type: application/json
     "productId": "20",
     "quantity": "2"
 }
+
+###
+PUT http://localhost:3003/product/edit
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTY4MzI4MCwiZXhwIjoxNjY1Njg2ODgwfQ.anPj1HFxK6pezgFotZyMNsqK_OzdaS3GlxseYnbeBp8
+Content-Type: application/json
+
+{
+    "id": "22",
+    "quantityStock": 10
+}
+
+###
+DELETE http://localhost:3003/product/delete/22
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6ImY5OTM1Y2RmLTY1NDgtNGVhYi1iNWY3LTEyYjY5MjhjYTRhYyIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTY2NTY4MzI4MCwiZXhwIjoxNjY1Njg2ODgwfQ.anPj1HFxK6pezgFotZyMNsqK_OzdaS3GlxseYnbeBp8

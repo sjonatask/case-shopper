@@ -1,5 +1,5 @@
 import { ShoppingListInput } from './../model/shoppingList';
-import { productsInput } from './../model/product';
+import { deleteProductInput, productsInput, editProductInput } from './../model/product';
 import { IAuthenticator, IHashManager, IGenerateId, ICheckDatas } from './../business/ports';
 import { ProductBusiness } from "../business/productBusiness";
 import { Authenticator } from '../services/authenticator';
@@ -55,7 +55,7 @@ export class ProductController {
             const token = req.headers.authorization 
 
             if( !productId || !quantity ) throw new EmptyFields
-            if(!token) throw new NoLog()
+            if(!token) throw new NoLog
             
             const input:ShoppingListInput = {
                 productId,
@@ -70,4 +70,50 @@ export class ProductController {
             res.status(500).send({error: error.message || error.sqlMessage})
         }
     }
+    
+    public async changeQty(req:Request, res:Response){
+        try {
+            const { quantityStock, id } = req.body
+            const token = req.headers.authorization
+
+            if(!token) throw new NoLog
+            if(!id || !quantityStock) throw new EmptyFields
+
+            const input:editProductInput = {
+                id,
+                qty: quantityStock,
+                token
+            }
+
+            await productBusiness.changeQty(input)
+
+            res.status(200).send({message: "edit with sucess"})
+        } catch (error:any) {
+            res.status(500).send({error: error.message || error.sqlMessage})
+        }
+    }
+
+    public async deleteProduct(req:Request, res:Response){
+        try {
+            const id  = req.params.id
+            const token = req.headers.authorization
+
+            if(!id) throw new EmptyFields
+            if(!token) throw new NoLog
+
+            const input:deleteProductInput = {
+                id,
+                token
+            }
+
+            await productBusiness.deleteProduct(input)
+
+            res.status(200).send({message: "product deleted"})
+        } catch (error:any) {
+            res.status(500).send({error: error.message || error.sqlMessage})
+        }
+    }
+
+
+
 }

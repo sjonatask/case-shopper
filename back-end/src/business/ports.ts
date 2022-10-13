@@ -15,4 +15,5 @@ export interface IGenerateId {
 export interface ICheckDatas {
     checkProductId: (productId: string) => Promise<boolean>
     checkUserId: (productId: string) => Promise<boolean>
+    checkEmail: (email: string) => Promise<boolean>
 }
