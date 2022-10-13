@@ -55,3 +55,19 @@ export interface productsInput {
     quantityStock: number
     token: string
 }
+
+export interface editProductDTO {
+    id: string,
+    qty: number
+}
+
+export interface editProductInput {
+    id: string,
+    qty: number,
+    token: string
+}
+
+export interface deleteProductInput{
+    id: string;
+    token: string;
+}

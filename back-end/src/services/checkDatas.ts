@@ -3,10 +3,10 @@ import { UserDataBase } from '../data/userDataBase';
 import { ProductDataBase } from './../data/productDataBase';
 
 export class CheckData implements ICheckDatas {
-    public async checkProductId(productId:string):Promise<boolean>{
-        const idFromData = await new ProductDataBase().getProductById(productId)
+    public async checkProductId(id:string):Promise<boolean>{       
+        const idFromData = await new ProductDataBase().getProductById(id)
         
-        if(!idFromData) return false
+        if(idFromData.length === 0) return false
         
         return true
     }
