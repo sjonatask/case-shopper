@@ -18,7 +18,6 @@ export class UserDataBase extends BaseDatabase{
                 role: user.getRole()
             })
             .into(this.TABLE_NAME)
-        BaseDatabase.destroyConnection()
     }
 
     public async getUserByEmail(email:string):Promise<User>{

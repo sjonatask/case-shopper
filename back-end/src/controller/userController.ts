@@ -33,10 +33,9 @@ export class UserController{
             }
             
             await userBusiness.signup(input)
-
             res.status(201).send({message: "signup with sucess"})
         } catch (error:any) {
-            res.status(error.code).send({error: error.message || error.sqlMessage})
+            res.status(500).send({error: error.message || error.sqlMessage})
         }
     }
 

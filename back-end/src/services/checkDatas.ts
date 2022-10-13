@@ -18,5 +18,13 @@ export class CheckData implements ICheckDatas {
         
         return true
     }
+
+    public async checkEmail(email: string):Promise<boolean>{
+        const emailFromData = await new UserDataBase().getUserByEmail(email)
+
+        if(!emailFromData) return false
+
+        return true
+    }
 }
   
