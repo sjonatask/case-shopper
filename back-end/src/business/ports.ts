@@ -1,3 +1,5 @@
+import { ChangeStock } from "../model/product";
+
 export interface IHashManager {
     hash: (text: string) => Promise<string>;
     compare: (text: string, hash: string) => Promise<boolean>;
@@ -16,4 +18,5 @@ export interface ICheckDatas {
     checkProductId: (productId: string) => Promise<boolean>
     checkUserId: (productId: string) => Promise<boolean>
     checkEmail: (email: string) => Promise<boolean>
+    changeQtyWhenBuy: (id: string, quantityBuy: number) => Promise<void>
 }

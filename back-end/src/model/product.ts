@@ -48,6 +48,34 @@ export class Products{
     }
 }
 
+export class ChangeStock{
+    constructor(
+        private productID: string,
+        private quantity: number
+    ){ }
+
+    getProductID(){
+        return this.productID
+    }
+    
+    getQuantity(){
+        return this.quantity
+    }
+
+    setProdudctID(productID: string){
+        this.productID = productID
+    }
+
+    setQuantity(quantityBuy: number){
+        this.quantity = quantityBuy
+    }
+
+    static toChangeStockModel(product: any): ChangeStock{
+        return new ChangeStock(product.id, product.qty)
+    }
+}
+
+
 export interface productsInput {
     idProduct: string
     name: string
@@ -56,10 +84,6 @@ export interface productsInput {
     token: string
 }
 
-export interface editProductDTO {
-    id: string,
-    qty: number
-}
 
 export interface editProductInput {
     id: string,

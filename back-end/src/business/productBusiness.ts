@@ -2,6 +2,7 @@ import { ProductDataBase } from '../data/productDataBase';
 import { CustomError, EmptyFields, InvalidProductId, InvalidToken, UnauthorizedUser } from '../error/customError';
 import { ShoppingListDTO, ShoppingListInput } from '../model/shoppingList';
 import {
+    ChangeStock,
     deleteProductInput,
     editProductInput,
     Products,
@@ -66,22 +67,25 @@ export class ProductBusiness {
         }
 
         await productDB.purchaseShoppingList(inputToData)
+        // await this.checkData.changeQtyWhenBuy(input.productId, input.quantity)
     }
     
-        public async changeQty(input:editProductInput):Promise<void>{
-            const user = this.authenticator.getData(input.token)
-            if(user.role !== "ADMIN") throw new UnauthorizedUser
+    public async changeQty(input:editProductInput):Promise<void>{
+        const user = this.authenticator.getData(input.token)
+        if(user.role !== "ADMIN") throw new UnauthorizedUser
     
-            // const checkProductId = await this.checkData.checkProductId(input.id)
-            // if(!checkProductId) throw new InvalidProductId
+        // const checkProductId = await this.checkData.checkProductId(input.id)
+        // if(!checkProductId) throw new InvalidProductId
     
-            const inputDTO = {
-                id: input.id,
-                qty: input.qty
-            }       
-            
-            const result = await productDB.changeQty(inputDTO)
+        const inputToModel = {
+            id: input.id,
+            qty: input.qty
         }
+        
+        const inputToData = ChangeStock.toChangeStockModel(inputToModel)
+            
+        const result = await productDB.changeQty(inputToData)
+    }
 
     public async deleteProduct(input:deleteProductInput):Promise<void>{
         const { id, token } = input

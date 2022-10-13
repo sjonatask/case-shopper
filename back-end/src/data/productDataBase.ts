@@ -1,4 +1,4 @@
-import { editProductDTO } from './../model/product';
+import { ChangeStock} from './../model/product';
 import { Products } from "../model/product";
 import { ShoppingListDTO } from "../model/shoppingList";
 import { BaseDatabase } from "./baseDataBase";
@@ -36,7 +36,7 @@ export class ProductDataBase extends BaseDatabase{
             .from(this.TABLE_NAME)
         BaseDatabase.destroyConnection()
         
-        return result
+        return result[0]
     }
 
     public async purchaseShoppingList(list:ShoppingListDTO):Promise<void>{
@@ -64,12 +64,12 @@ export class ProductDataBase extends BaseDatabase{
             .where({id_product: id})
     }
 
-    public async changeQty(product:any):Promise<void>{                      
+    public async changeQty(product:ChangeStock):Promise<void>{                      
         await this.getConnection()
             .update({
-                quantity_stock: product.qty
+                quantity_stock: product.getQuantity()
             })
-            .where({id: product.id})
+            .where({id: product.getProductID()})
             .from(this.TABLE_NAME)
     }
 }
