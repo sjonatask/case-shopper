@@ -7,7 +7,7 @@ export const ProductList = styled.div`
     justify-content: center;
     padding: 2px
     width: 65%;
-    height: 40%;
+    height: 18%;
 `
 
 export const RowList = styled.div`
@@ -20,5 +20,6 @@ export const RowList = styled.div`
         margin: 10px;
         align-self: center;
         width: 70%
+        cursor: pointer;
     }
 `

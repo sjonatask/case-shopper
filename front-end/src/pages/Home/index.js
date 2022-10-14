@@ -71,6 +71,7 @@ const Home = () => {
     }
     const clearCart = () => {
         setProductsCart([])
+        setTotalValue(0)
     }
 
 
@@ -93,6 +94,7 @@ const Home = () => {
               totalValue={totalValue}
               removeProductToCart={removeProductToCart}
               productCart={productsCart}
+              clearCart={clearCart}
             />
         </ContainerComponents>
     )

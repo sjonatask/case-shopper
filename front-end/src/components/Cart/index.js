@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { CartContainer } from './styles'
 import ItemCart from '../ItemCart'
 
@@ -18,6 +18,7 @@ const Cart = (props) => {
                 )
             }
             <p>Valor Total: R$ {props.totalValue}</p>
+            <button onClick={props.clearCart}>Limpar Carrinho</button>
         </CartContainer>
     )
 }

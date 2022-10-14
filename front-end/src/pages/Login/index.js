@@ -6,37 +6,37 @@ import PageTitle from "../../components/PageTitle";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
 
-const Login = () => {
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
-  
+const Login = (props) => {
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
+
     const onChangeEmail = ({ target }) =>{
         setEmail(target.value)
     }
-    
+
     const onChangePassword = ({ target }) =>{
         setPassword(target.value)
     }
-
-    const onSubmitLogin = async (event) =>{
+    const executeRequest = async () =>{
         const body = {
-            email: email,
-            password: password
+            email,
+            password
         }
-        console.log(body);
-        await axios
+
+       await axios
             .post(`${BASE_URL}/user/login`, body)
-            .then((response) => {
-                console.log(response.data.token)
-                window.localStorage.setItem('token', response.data.token)
-            })
-            .catch((error) => alert(error.message))
+            .then((res) => {localStorage.setItem('token', JSON.stringify(res.data.token))})
+            .catch((error) => {alert(error.response.data.error)})
+
+            setEmail('')
+            setPassword('')
     }
 
     return(
         <section>
             <PageTitle title={"Login"}/>
-            <LoginForm>
+
+            <LoginForm>                
                 <TextField id="email"
                 label="E-mail"
                 variant="standard"
@@ -54,13 +54,11 @@ const Login = () => {
                 />
 
                 <Button
-                type={"submit"}
                 variant="contained"
-                onClick={onSubmitLogin}
-                >Login</Button>
+                onClick={executeRequest}
+                >Submit</Button>
             </LoginForm>
         </section>
     )
 }
-
 export default Login
