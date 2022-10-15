@@ -6,3 +6,15 @@ export const CartContainer = styled.div`
     flex-direction: column;
     padding: 10px;
 `
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    padding: 1px;
+    justify-content: space-evenly;
+    
+
+    button{
+        width: 25%
+    }
+`

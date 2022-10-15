@@ -15,6 +15,10 @@ const Home = () => {
         getAllProducts()
     }, [])
 
+    useEffect(() => {
+        if(productsCart.length === 0) setTotalValue(0)
+    }, [productsCart])
+
     const getAllProducts = async () => {
         await axios
             .get(`${BASE_URL}/product`)
@@ -69,6 +73,7 @@ const Home = () => {
     const rmvTotalValue = (value) =>{
         setTotalValue(totalValue - value)
     }
+
     const clearCart = () => {
         setProductsCart([])
         setTotalValue(0)
