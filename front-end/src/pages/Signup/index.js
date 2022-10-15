@@ -3,12 +3,14 @@ import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { SignupForm } from "./styles";
 import PageTitle from "../../components/PageTitle";
+import axios from "axios";
+import { BASE_URL } from "../../constants/urls";
 
 
 const Signup = () => {
-    const [name, setName] = useState(undefined)
-    const [email, setEmail] = useState(undefined)
-    const [password, setPassword] = useState(undefined)
+    const [name, setName] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const onChangeEmail = ({ target }) =>{
         setEmail(target.value)
@@ -21,8 +23,18 @@ const Signup = () => {
     const onChangePassword = ({ target }) =>{
         setPassword(target.value)
     }
-    const onSubmitSignup = ({ targe }) =>{
+    const executeRequest = () =>{
+        const body = {
+            name,
+            email,
+            password
+        }
 
+        axios
+            .post(`${BASE_URL}/user/signup`, body)
+            .then((res) => {console.log(res)})
+            .catch((error) => {console.log(error.response.data)})
+        
     }
 
     return(
@@ -56,7 +68,7 @@ const Signup = () => {
                 <Button
                 type={"submit"}
                 variant="contained"
-                onClick={onSubmitSignup}
+                onClick={executeRequest}
                 >Submit</Button>
             </SignupForm>
         </section>
