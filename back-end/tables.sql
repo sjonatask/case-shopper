@@ -21,7 +21,3 @@ CREATE TABLE IF NOT EXISTS user_shopping_list(
     FOREIGN KEY (id_product) REFERENCES products_shopper(id),
     FOREIGN KEY (id_user) REFERENCES user_shopper(id)
 );
-
-UPDATE products_shopper
-SET quantity_stock = 4
-WHERE id = "22"
