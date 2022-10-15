@@ -25,7 +25,10 @@ const Login = (props) => {
 
        await axios
             .post(`${BASE_URL}/user/login`, body)
-            .then((res) => {localStorage.setItem('token', res.data.token)})
+            .then((res) => {
+                alert("logado com sucesso")
+                localStorage.setItem('token', res.data.token)
+            })
             .catch((error) => {alert(error.response.data.error)})
 
             setEmail('')
@@ -34,6 +37,7 @@ const Login = (props) => {
 
     return(
         <section>
+            <a href="http://localhost:3000/home">Home</a>
             <PageTitle title={"Login"}/>
 
             <LoginForm>                
@@ -56,7 +60,8 @@ const Login = (props) => {
                 <Button
                 variant="contained"
                 onClick={executeRequest}
-                >Submit</Button>
+                >Login</Button>
+                <div><a href="http://localhost:3000/signup">não tem conta ? Registre-se</a></div>
             </LoginForm>
         </section>
     )
