@@ -25,7 +25,7 @@ const Login = (props) => {
 
        await axios
             .post(`${BASE_URL}/user/login`, body)
-            .then((res) => {localStorage.setItem('token', JSON.stringify(res.data.token))})
+            .then((res) => {localStorage.setItem('token', res.data.token)})
             .catch((error) => {alert(error.response.data.error)})
 
             setEmail('')
