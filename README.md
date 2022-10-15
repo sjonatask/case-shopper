@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS user_shopping_list(
 );
 ```
 ## Documentação
-- link aqui
+- https://documenter.getpostman.com/view/18694716/2s847BSazX
 
 ## Tecnologias Utilizadas no Front-End
 1. React.js
