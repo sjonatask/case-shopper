@@ -4,6 +4,7 @@ import { BASE_URL } from "../../constants/urls";
 import axios from "axios";
 import { ProductCards, ContainerComponents } from "./styles";
 import Cart from "../../components/Cart"
+import Header from "../../components/Header";
 
 
 const Home = () => {
@@ -80,7 +81,9 @@ const Home = () => {
     }
 
 
-    return(<ContainerComponents>
+    return(<>
+        <Header/>
+        <ContainerComponents>
             <ProductCards>
                 {products &&
                     products.map(e => 
@@ -102,6 +105,7 @@ const Home = () => {
               clearCart={clearCart}
             />
         </ContainerComponents>
+    </>
     )
 }
 

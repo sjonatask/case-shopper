@@ -32,13 +32,14 @@ const Signup = () => {
 
         axios
             .post(`${BASE_URL}/user/signup`, body)
-            .then((res) => {console.log(res)})
-            .catch((error) => {console.log(error.response.data)})
+            .then((res) => {alert("cadastrado com sucesso")})
+            .catch((error) => {alert(error.response.data.error)})
         
     }
 
     return(
         <section>
+            <a href="http://localhost:3000/home">Home</a>
             <PageTitle title={"Signup"}/>
             <SignupForm>
                 <TextField id="name"
